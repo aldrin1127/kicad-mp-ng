@@ -23,7 +23,7 @@ task:
       mkdir -p /home/builder/.linuxbrew/{bin,etc,lib,sbin,share,var/homebrew/linked,cellar}
       brew doctor
       git clone https://github.com/homebrew/homebrew-core.git /home/builder/.linuxbrew/Homebrew/Library/Taps/homebrew/homebrew-core
-      brew install --HEAD bash curl jq git wget
+      brew install bash curl gcc jq git wget
       EOL
   
   Build_script:
