@@ -15,9 +15,10 @@ task:
       cd /home/builder
       git clone --depth=1 https://aur.archlinux.org/paru-git.git
       pushd paru-git
-      yes | makepkg -si
+      makepkg -sic --noconfirm
       popd
       rm -rf paru-git
+      paru -Syu jdk-temurin android-sdk-cmdline-tools-latest
       SCRIPT
   
   Build_script:
