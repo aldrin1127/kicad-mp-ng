@@ -21,7 +21,8 @@ task:
       homebrew_tag="$(curl -s https://api.github.com/repos/homebrew/brew/tags | jq -c '.[]' | jq -r '.name' | head -n1)"
       curl -sLo- "https://github.com/Homebrew/brew/archive/refs/tags/\${homebrew_tag}.tar.gz" | tar -zxf- -C /home/builder/.linuxbrew/Homebrew --strip-components=1
       mkdir -p /home/builder/.linuxbrew/{bin,etc,lib,sbin,share,var/homebrew/linked,cellar}
-      brew help
+      brew doctor
+      brew tap homebrew/core
       EOL
   
   Build_script:
