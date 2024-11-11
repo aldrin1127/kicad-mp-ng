@@ -18,7 +18,7 @@ task:
       makepkg -sic --noconfirm
       popd
       rm -rf paru-git
-      paru -Syu jdk-temurin android-sdk-cmdline-tools-latest
+      paru -Syu --noconfirm jdk-temurin android-sdk-cmdline-tools-latest
       source /etc/profile
       sdkmanager --update
       yes | sdkmanager --licenses
