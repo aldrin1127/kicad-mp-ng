@@ -1,18 +1,22 @@
 task:
   timeout_in: 300m
   container:
-    image: archlinux:base
+    image: debian:sid
     cpu: 8
     memory: 32G
 
-  Build_script:
-    - pacman -Syyuu --noconfirm
-    - pacman -Syyuu --noconfirm base-devel curl file git procps sudo
+  Install-dependencies_script:
+    - apt-get -qqy update
+    - apt-get -qqy upgrade
+    - apt-get -qqy install build-essential curl file git jq procps sudo
     - useradd -m builder -s /bin/bash
     - echo 'builder ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
     - |
       su - builder -c /bin/bash <<EOL
       cd /home/builder
-      sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      mkdir -p /home/builder/.brew-builder/Homebrew
+      homebrew_tag="$(curl -s https://api.github.com/repos/homebrew/brew/tags | jq -c '.[]' | jq -r '.name' | head -n1)"
+      curl -sLo- "https://github.com/Homebrew/brew/archive/refs/tags/${homebrew_tag}.tar.gz" | tar -zxf- -C /home/builder/.brew-builder/Homebrew --strip-components=1
+      ls /home/builder/.brew-builder/Homebrew
       git clone --depth=1 https://github.com/aldrin1127/kicad-mp-ng.git
       EOL
