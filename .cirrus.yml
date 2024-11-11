@@ -14,6 +14,6 @@ task:
     - |
       su - builder -c /bin/bash <<EOL
       cd /home/builder
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
       git clone --depth=1 https://github.com/aldrin1127/kicad-mp-ng.git
       EOL
