@@ -1,0 +1,11 @@
+task:
+  timeout_in: 300m
+  container:
+    image: ghcr.io/sushrut1101/docker:arch
+    cpu: 8
+    memory: 32G
+
+  Build_script:
+    - git clone --depth=1 https://github.com/aldrin1127/kicad-mp-ng.git
+    - cd kicad-mp-ng
+    - ./build.sh

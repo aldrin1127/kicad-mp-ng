@@ -1,0 +1,6 @@
+[
+    {
+        "name"    : "bzip3",
+	"version" : "%script(curl -sL https://api.github.com/repos/kspalaiologos/bzip3/tags | jq -c '.[0,1] | {name: .name}' | jq -r '.name' | paste -sd " " | sed -e 's/corpus //')"
+    }
+]
