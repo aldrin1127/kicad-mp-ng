@@ -8,6 +8,8 @@ task:
     - brew upgrade
     - brew install bash curl gcc jq git wget
     - brew install --cask android-commandlinetools temurin
+    - sdkmanager --update
+    - sdkmanager --list
     - echo y | sdkmanager --licenses
     - sdkmanager \
         "platforms;android-35" \
