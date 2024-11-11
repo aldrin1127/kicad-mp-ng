@@ -1,0 +1,15 @@
+task:
+  timeout_in: 300m
+  container:
+    image: debian:sid
+    cpu: 8
+    memory: 32G
+
+  Build_script:
+    - apt-get -qqy update
+    - apt-get -qqy upgrade
+    - apt-get -qqy build-essential
+    - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    - git clone --depth=1 https://github.com/aldrin1127/kicad-mp-ng.git
+    - cd kicad-mp-ng
+    - ./build.sh
