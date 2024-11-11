@@ -22,9 +22,10 @@ task:
       source /etc/profile
       sdkmanager --update
       yes | sdkmanager --licenses
-      sdkmanager "platforms;android-35" "build-tools;35.0.0" "ndk-bundle"
+      yes | sdkmanager "platforms;android-35" "build-tools;35.0.0" "ndk-bundle"
       SCRIPT
   
   Build_script:
     - git clone --depth=1 https://github.com/aldrin1127/kicad-mp-ng.git
     - cd kicad-mp-ng
+    - ./build.sh aarch64
