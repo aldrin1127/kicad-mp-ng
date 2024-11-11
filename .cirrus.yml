@@ -15,7 +15,7 @@ task:
       su - builder -c /bin/bash <<EOL
       cd /home/builder
       # Homebrew
-      echo 'export PATH="/home/builder/.linuxbrew/Homebrew/bin:$PATH' > /home/builder/.bash_profile
+      echo 'export PATH="/home/builder/.linuxbrew/Homebrew/bin:$PATH"' > /home/builder/.bash_profile
       source /home/builder/.bash_profile
       mkdir -p /home/builder/.linuxbrew/Homebrew
       homebrew_tag="$(curl -s https://api.github.com/repos/homebrew/brew/tags | jq -c '.[]' | jq -r '.name' | head -n1)"
