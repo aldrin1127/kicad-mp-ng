@@ -13,7 +13,7 @@ task:
     - echo 'builder ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
     - |
       su - builder -c /bin/bash <<EOL
-      cd $HOME
+      cd /home/builder
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
       git clone --depth=1 https://github.com/aldrin1127/kicad-mp-ng.git
       EOL
