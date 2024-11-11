@@ -14,9 +14,16 @@ task:
     - |
       su - builder -c /bin/bash <<EOL
       cd /home/builder
-      mkdir -p /home/builder/.brew-builder/Homebrew
-      homebrew_tag="$(curl -s https://api.github.com/repos/homebrew/brew/tags | jq -c '.[]' | jq -r '.name' | head -n1)"
-      curl -sLo- "https://github.com/Homebrew/brew/archive/refs/tags/${homebrew_tag}.tar.gz" | tar -zxf- -C /home/builder/.brew-builder/Homebrew --strip-components=1
-      ls /home/builder/.brew-builder/Homebrew
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      # mkdir -p /home/builder/.brew-builder/Homebrew
+      # homebrew_tag="$(curl -s https://api.github.com/repos/homebrew/brew/tags | jq -c '.[]' | jq -r '.name' | head -n1)"
+      # curl -sLo- "https://github.com/Homebrew/brew/archive/refs/tags/${homebrew_tag}.tar.gz" | tar -zxf- -C /home/builder/.brew-builder/Homebrew --strip-components=1
+      find /home/builder/.brew-builder/Homebrew
+      EOL
+  
+  Build_script:
+    - |
+      su - builder -c /bin/bash <<EOL
+      cd /home/builder
       git clone --depth=1 https://github.com/aldrin1127/kicad-mp-ng.git
       EOL
