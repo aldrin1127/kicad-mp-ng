@@ -1,14 +1,19 @@
 task:
   timeout_in: 300m
   macos_instance:
-    image: ghcr.io/cirruslabs/macos-runner:sequoia
-    cpu: 8
-    memory: 32G
+    image: ghcr.io/cirruslabs/macos-runner:sonoma
 
   Pre-build_script:
     - brew update
     - brew upgrade
     - brew install bash curl gcc jq git wget
+    - brew install --cask android-commandlinetools temurin
+    - yes | sdkmanager --licenses
+    - |
+      sdkmanager \
+        "platforms;android-34" \
+        "build-tools;34.0.0"   \
+        "ndk-bundle"
   
   Build_script:
     - git clone --depth=1 https://github.com/aldrin1127/kicad-mp-ng.git
