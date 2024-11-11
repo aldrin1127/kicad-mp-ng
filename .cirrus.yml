@@ -22,7 +22,8 @@ task:
       curl -sLo- "https://github.com/Homebrew/brew/archive/refs/tags/\${homebrew_tag}.tar.gz" | tar -zxf- -C /home/builder/.linuxbrew/Homebrew --strip-components=1
       mkdir -p /home/builder/.linuxbrew/{bin,etc,lib,sbin,share,var/homebrew/linked,cellar}
       brew doctor
-      brew tap homebrew/core
+      git clone https://github.com/homebrew/homebrew-core.git /home/builder/.linuxbrew/Homebrew/Library/Taps/homebrew/homebrew-core
+      brew install --HEAD bash curl jq git wget
       EOL
   
   Build_script:
