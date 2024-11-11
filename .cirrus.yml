@@ -6,11 +6,11 @@ task:
   Pre-build_script:
     - brew update
     - brew upgrade
-    - brew install bash curl gcc jq git wget
+    - brew install bash coreutils curl gcc jq git wget
     - brew install --cask android-commandlinetools temurin
-    - yes | sdkmanager --licenses
+    - gyes | sdkmanager --licenses
     - |
-      yes | sdkmanager \
+      gyes | sdkmanager \
         "platforms;android-35" \
         "build-tools;35.0.0"   \
         "ndk-bundle"
