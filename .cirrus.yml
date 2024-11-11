@@ -8,8 +8,12 @@ task:
   Build_script:
     - apt-get -qqy update
     - apt-get -qqy upgrade
-    - apt-get -qqy install curl build-essential file git procps
-    - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    - git clone --depth=1 https://github.com/aldrin1127/kicad-mp-ng.git
-    - cd kicad-mp-ng
-    - ./build.sh
+    - apt-get -qqy install curl build-essential file git procps sudo
+    - useradd -m builder -s /bin/bash
+    - echo 'builder ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+    - |
+      su - builder -c /bin/bash <<EOL
+      cd $HOME
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      git clone --depth=1 https://github.com/aldrin1127/kicad-mp-ng.git
+      EOL
