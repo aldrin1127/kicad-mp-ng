@@ -8,7 +8,7 @@ task:
   Build_script:
     - apt-get -qqy update
     - apt-get -qqy upgrade
-    - apt-get -qqy build-essential
+    - apt-get -qqy install curl build-essential file git procps
     - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     - git clone --depth=1 https://github.com/aldrin1127/kicad-mp-ng.git
     - cd kicad-mp-ng
