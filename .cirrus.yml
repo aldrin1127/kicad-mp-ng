@@ -22,9 +22,10 @@ task:
       source /etc/profile
       sudo chmod g+w /opt/android-sdk
       sudo chown root:builder /opt/android-sdk
-      /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --update
-      yes | /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
-      yes | /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager "platforms;android-35" "build-tools;35.0.0" "ndk-bundle"
+      sdkmanager --update
+      yes | sdkmanager --licenses
+      yes | sdkmanager "platforms;android-35" "build-tools;35.0.0" "ndk-bundle"
+      find /opt/android-sdk
       SCRIPT
   
   Build_script:
