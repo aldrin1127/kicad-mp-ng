@@ -54,4 +54,8 @@ done
 # fi
 
 _arch="${1}"
-"${_work_dir}"/android/build.sh "${_arch}"
+case "${_arch}" in
+    aarch64) arch=aarch64 ;;
+    x86_64)  arch=x86_64  ;;
+esac
+"${_work_dir}"/android/build.sh "${arch}"
