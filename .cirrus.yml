@@ -22,7 +22,7 @@ task:
       source /etc/profile
       sdkmanager --update
       yes | sdkmanager --licenses
-      yes | sdkmanager "platforms;android-35" "build-tools;35.0.0" "ndk-bundle"
+      yes | sudo sdkmanager "platforms;android-35" "build-tools;35.0.0" "ndk-bundle"
       SCRIPT
   
   Build_script:
