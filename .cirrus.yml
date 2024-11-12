@@ -20,9 +20,11 @@ task:
       rm -rf paru-git
       paru -Syu --noconfirm jdk-temurin android-sdk-cmdline-tools-latest
       source /etc/profile
-      sdkmanager --update
-      yes | sdkmanager --licenses
-      yes | sudo sdkmanager "platforms;android-35" "build-tools;35.0.0" "ndk-bundle"
+      sudo chmod g+w /opt/android-sdk
+      sudo chown root:builder /opt/android-sdk
+      /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --update
+      yes | /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
+      yes | /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager "platforms;android-35" "build-tools;35.0.0" "ndk-bundle"
       SCRIPT
   
   Build_script:
